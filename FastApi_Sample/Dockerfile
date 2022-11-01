@@ -1,4 +1,4 @@
-    FROM python:3.9
+    FROM python:3.8.10
 
     #Create working directory 
     WORKDIR /code
