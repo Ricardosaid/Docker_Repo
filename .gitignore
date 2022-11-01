@@ -352,3 +352,6 @@ MigrationBackup/
 .vscode/launch.json
 
 .vscode
+
+env/
+venv/
