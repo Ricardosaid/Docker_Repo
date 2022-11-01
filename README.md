@@ -1,11 +1,11 @@
-# CustomTelemetryAI
+# Docker samples
 
 ## Objectives
-1. Custom telemetry with application Insights in .NET solution
+1. Docker build & run with dockerfile in python and .NET
 
 ## Requirements
-1. Azure Portal
-2. JetBrains Riders
+1. VScode
+2. Docker
 
 
 ### `saidleben`
