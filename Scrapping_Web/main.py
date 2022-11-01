@@ -30,7 +30,10 @@ def main():
     while(True):
         idx = random.randrange(0,n_movies)
         print(f"{titles[idx]} {years[idx]}, Rating : {ratings[idx]:.2f} Actors : {actor_list[idx]}")
-        break
+
+        user_input = input("want you other movie (y,Y/[n,N]) ?")
+        if user_input != "y" and user_input != "Y":
+            break
 
 if __name__ == "__main__":
     main()
