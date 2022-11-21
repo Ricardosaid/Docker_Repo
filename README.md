@@ -20,6 +20,47 @@ You can also use `grep` to filter searches:
 % docker images webapi | grep net 
 ```
 
+## Build your Go image
+
+### Requirements
+1. You have enabled BuildKit on your machine
+If you are running Docker on linux, you can enable Buildkit either by using an enviroment or by making Buildkit the default setting
+To set the Buildkit environment variable when running the `docker build` command, run : 
+```console
+$ DOCKER_BUILDKIT=1 docker build .
+```
+
+To enable docker BuildKit by default, set daemon configuration in `/etc/docker/daemon.json` feature to true and restart the daemon. If the `daemon.json` file does not exis, create it and the add the following to the file:
+```console
+{
+    "feature" : {
+        "buildkit" : true
+    }
+}
+```
+and restart the daemon
+
+> Note: Buildkit only supports building Linux containers
+2. Go version 1.16 or later
+
+Brief description to install go:
+
+Follow the instructions here `https://go.dev/doc/install`
+Commands that can help you :
+Delete a directory:
+```console
+sudo rm -r go
+```
+In the step two :
+Execute in the shell:
+```console
+cd $HOME
+```
+and then:
+```console
+export PATH=$PATH:/usr/local/go/bin
+```
+
 ## Build a Scrapping web in python
 You can build & run a python based container image:
 
