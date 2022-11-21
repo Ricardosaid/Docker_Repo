@@ -60,6 +60,13 @@ and then:
 ```console
 export PATH=$PATH:/usr/local/go/bin
 ```
+### Meet the example application
+The sample application is a minimal HTTP server that has only three features:
+1. It responds with a text message on request to `/.`
+2. It responds with `{"Status":"Ok"}` JSON to the health check request on requests to `/ping`
+3. The port it listens on is configurable using the enviroment variable `HTTP_PORT`. The dedault value is `8080`
+
+It has enough basic properties of a REST microservice to be useful for our learning of Docker
 
 ## Build a Scrapping web in python
 You can build & run a python based container image:
