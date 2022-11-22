@@ -20,6 +20,82 @@ You can also use `grep` to filter searches:
 % docker images webapi | grep net 
 ```
 
+## Build your Go image
+
+### Requirements
+1. You have enabled BuildKit on your machine
+If you are running Docker on linux, you can enable Buildkit either by using an enviroment or by making Buildkit the default setting
+To set the Buildkit environment variable when running the `docker build` command, run : 
+```console
+$ DOCKER_BUILDKIT=1 docker build .
+```
+
+To enable docker BuildKit by default, set daemon configuration in `/etc/docker/daemon.json` feature to true and restart the daemon. If the `daemon.json` file does not exis, create it and the add the following to the file:
+```console
+{
+    "feature" : {
+        "buildkit" : true
+    }
+}
+```
+and restart the daemon
+
+> Note: Buildkit only supports building Linux containers
+2. Go version 1.16 or later
+
+Brief description to install go:
+
+Follow the instructions here `https://go.dev/doc/install`
+Commands that can help you :
+Delete a directory:
+```console
+sudo rm -r go
+```
+In the step two :
+Execute in the shell:
+```console
+cd $HOME
+```
+and then:
+```console
+export PATH=$PATH:/usr/local/go/bin
+```
+### Meet the example application
+The sample application is a minimal HTTP server that has only three features:
+1. It responds with a text message on request to `/.`
+2. It responds with `{"Status":"Ok"}` JSON to the health check request on requests to `/ping`
+3. The port it listens on is configurable using the enviroment variable `HTTP_PORT`. The dedault value is `8080`
+
+It has enough basic properties of a REST microservice to be useful for our learning of Docker
+
+### Dockerizing it
+```console
+docker build --tag docker-gs-ping .
+```
+> Note: if you don't enable Builkit by default, you need add the tag `DOCKER_BUILDKIT=1 docker build --tag docker-gs-ping .`
+If you can work with flags for more readability use:
+
+```console
+docker image tag docker-gs-ping:latest docker-gs-ping:v1.0
+```
+Run our image:
+```console
+docker run -d -p 8080:8080 --name rest-server docker-gs-ping
+```
+> Note: `d` = detached (background), `p` = publish 
+
+If you want remove a container:
+```console
+docker stop "container ID"/"container name"
+docker rm "container ID"/"container name"
+```
+### Helpers
+When you `Run` your main.go, the port  `8080` will be used, if you want kill a process running on particular port in linux:
+
+```console
+kill -9 $(lsof -t -i:8080)
+```
+
 ## Build a Scrapping web in python
 You can build & run a python based container image:
 
