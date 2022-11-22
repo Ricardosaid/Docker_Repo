@@ -68,6 +68,34 @@ The sample application is a minimal HTTP server that has only three features:
 
 It has enough basic properties of a REST microservice to be useful for our learning of Docker
 
+### Dockerizing it
+```console
+docker build --tag docker-gs-ping .
+```
+> Note: if you don't enable Builkit by default, you need add the tag `DOCKER_BUILDKIT=1 docker build --tag docker-gs-ping .`
+If you can work with flags for more readability use:
+
+```console
+docker image tag docker-gs-ping:latest docker-gs-ping:v1.0
+```
+Run our image:
+```console
+docker run -d -p 8080:8080 --name rest-server docker-gs-ping
+```
+> Note: `d` = detached (background), `p` = publish 
+
+If you want remove a container:
+```console
+docker stop "container ID"/"container name"
+docker rm "container ID"/"container name"
+```
+### Helpers
+When you `Run` your main.go, the port  `8080` will be used, if you want kill a process running on particular port in linux:
+
+```console
+kill -9 $(lsof -t -i:8080)
+```
+
 ## Build a Scrapping web in python
 You can build & run a python based container image:
 
