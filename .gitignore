@@ -355,3 +355,5 @@ MigrationBackup/
 
 env/
 venv/
+
+GolangWebApi/docker-gs-ping
