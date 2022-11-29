@@ -96,6 +96,12 @@ When you `Run` your main.go, the port  `8080` will be used, if you want kill a p
 kill -9 $(lsof -t -i:8080)
 ```
 
+### Multi-stage builds
+The main idea is that we use one image to produce some artifacts,which are then placed intro another, much smaller
+image, containing only the parts necessary for running the artifacts that we have built
+
+
+
 ## Build a Scrapping web in python
 You can build & run a python based container image:
 
