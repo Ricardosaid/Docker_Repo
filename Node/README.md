@@ -37,4 +37,21 @@ When you has already realized all the changes in the current code, you must crea
 docker build -t node-app:v2 .
 ```
 
+## Share the image
 
+You can use Docker Hub to publish :
+
+```console
+docker tag "image ID" "new tag"
+```
+
+```console
+docker tag 11111 saidleben/node-app:v2
+```
+> Note: Is the same image but different id
+
+You can push:
+
+```console
+docker push saidleben/node-app:v2
+```
